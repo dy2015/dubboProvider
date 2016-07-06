@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	<!-- 加载定时任务配置 -->
+	<bean id="timeController" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+				<property name="targetObject" ref="timeTask"/>
+				<property name="targetMethod" value="runTask"/>
+			</bean>
+		</property>
+		<property name="cronExpression">
+			<value>0 0 0/12 * * ?</value>
+		</property>
+	</bean>
+	<!--
+		总管理类 如果将延迟加载lazy-init='false'那么当spring容器启动时就会执行调度程序 autowire="no"
+		不使用自动装配。必须通过ref元素指定依赖，这是默认设置
+	-->
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="quartzProperties">
+   			<props>
+    			<prop key="org.quartz.threadPool.threadCount">3</prop>
+   			</props>
+  		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="timeController"/>
+			</list>
+		</property>
+	</bean>
+</beans>  
