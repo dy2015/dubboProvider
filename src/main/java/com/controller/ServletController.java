@@ -145,7 +145,7 @@ public class ServletController {
 				System.out.println("CookieDomain=" + cc.getDomain() + ",Cookie存放的数据是：(key=" + cc.getName() + ",value=" + URLDecoder.decode(cc.getValue(), "utf-8") + ")");
 			} // end--if
 		} // end--for
-		return "error";
+		return "sucess";
 	}
 	
 	
