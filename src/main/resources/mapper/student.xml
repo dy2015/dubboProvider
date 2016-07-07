@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dao.StudentDao">
-	<resultMap type="com.po.Student" id="student">
+	<resultMap type="com.vo.Student" id="student">
 		<result column="id" property="id" />
 		<result column="name" property="name" />
 		<result column="age" property="age" />

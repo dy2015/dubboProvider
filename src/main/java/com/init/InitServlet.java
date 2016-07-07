@@ -1,4 +1,4 @@
-package com.controller;
+package com.init;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -3,10 +3,6 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet-mapping>
     <servlet-name>default</servlet-name>
-    <url-pattern>/js/*</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>default</servlet-name>
     <url-pattern>/favicon.ico</url-pattern>
   </servlet-mapping>
   <context-param>
@@ -39,20 +35,6 @@
   <servlet-mapping>
     <servlet-name>DruidStatView</servlet-name>
     <url-pattern>/druid/*</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>SpringMVC</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring-mvc.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-    <async-supported>true</async-supported>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SpringMVC</servlet-name>
-    <url-pattern>/</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>/index.jsp</welcome-file>

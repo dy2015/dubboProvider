@@ -43,19 +43,22 @@ public class KafkaConsumer extends Thread {
 		topicCountMap.put(topic, 1); // 一次从主题中获取一个数据
 		Map<String, List<KafkaStream<byte[], byte[]>>> messageStreams = consumer.createMessageStreams(topicCountMap);
 		KafkaStream<byte[], byte[]> stream = messageStreams.get(topic).get(0);// 获取每次接收到的这个数据
-		ConsumerIterator<byte[], byte[]> iterator = stream.iterator();
-		while (iterator.hasNext()) {
-			MessageAndMetadata<byte[], byte[]> mam = iterator.next();
-			// System.out.println("consume: Partition [" + mam.partition() + "]
-			// Message: [" + new String(mam.message()) + "]
-			// Offset:["+mam.offset()+"]");
-			System.out.println(mam.partition());
-			if (mam.partition() == 0) {
-				part_0+=Integer.parseInt(new String(mam.message()));
-				System.out.println("请求queryOne方法第" + part_0 + "次");
-			} else {
-				part_1+=Integer.parseInt(new String(mam.message()));
-				System.out.println("请求queryList方法第" + part_1 + "次");
+		if (stream != null) {
+			ConsumerIterator<byte[], byte[]> iterator = stream.iterator();
+			while (iterator.hasNext()) {
+				MessageAndMetadata<byte[], byte[]> mam = iterator.next();
+				// System.out.println("consume: Partition [" + mam.partition() +
+				// "]
+				// Message: [" + new String(mam.message()) + "]
+				// Offset:["+mam.offset()+"]");
+				System.out.println(mam.partition());
+				if (mam.partition() == 0) {
+					part_0 += Integer.parseInt(new String(mam.message()));
+					System.out.println("请求queryOne方法第" + part_0 + "次");
+				} else {
+					part_1 += Integer.parseInt(new String(mam.message()));
+					System.out.println("请求queryList方法第" + part_1 + "次");
+				}
 			}
 		}
 	}
