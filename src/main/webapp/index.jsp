@@ -63,7 +63,7 @@
 	<br>
 	<form id="fm2" method="post">
 		Ajax的请求：
-		<input type="text" d="common2" class= "common2" name="common2" value="Ajax的请求"/>
+		<input type="text" id="common2" class= "common2" name="common2" value="Ajax的请求"/>
 		<input type="text" id="value2" class= "value2" name="value2" value=""/>
 		<input type="button" id= "request2" value="请求"/>
 	</form>
