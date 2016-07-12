@@ -16,7 +16,7 @@ public class StudentServiceImpl implements StudentService {
 
 	public StudentServiceImpl() {
 		super();
-		System.out.println("StudentServiceImpl被创建第" + (++count) + "次");
+		System.out.println("StudentServiceImpl-----第一台服务-------被创建第" + (++count) + "次");
 	}
 
 	public Student queryOne(int id) {

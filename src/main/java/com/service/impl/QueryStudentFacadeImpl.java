@@ -27,6 +27,7 @@ public class QueryStudentFacadeImpl implements QueryStudentFacade {
 
 	@Override
 	public List<Student> queryList() {
+		System.out.println("第一台服务");
 		return studentService.queryList();
 	}
 

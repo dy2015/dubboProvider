@@ -54,10 +54,10 @@ public class KafkaConsumer extends Thread {
 				System.out.println(mam.partition());
 				if (mam.partition() == 0) {
 					part_0 += Integer.parseInt(new String(mam.message()));
-					System.out.println("请求queryOne方法第" + part_0 + "次");
+					System.out.println("第一台服务-------请求queryOne方法第" + part_0 + "次");
 				} else {
 					part_1 += Integer.parseInt(new String(mam.message()));
-					System.out.println("请求queryList方法第" + part_1 + "次");
+					System.out.println("第一台服务-------请求queryList方法第" + part_1 + "次");
 				}
 			}
 		}
